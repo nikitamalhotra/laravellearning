@@ -10,7 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+/*
+Route::get('/example', function () {
     return view('welcome');
 });
+
+Route::get('admin/category/post', array ('as'=> 'admin.post', function(){
+	$url = route('admin.post');
+	return $url;
+}));*/
+
+//Route::resource('post', 'PostsController');
+Route::get('contact', 'PostsController@contact');
+//Route::get('/post/{id}', 'PostsController@show_post');
+Route::get('/post/{id}/{fname}/{lname}', 'PostsController@show_post');
