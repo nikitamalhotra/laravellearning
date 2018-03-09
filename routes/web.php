@@ -220,9 +220,16 @@ Route::get("/deletemethod1", function(){
 */
 
 //Eloquent 8 - SoftDelete Method
-use Illuminate\Database\Eloquent\SoftDeletes;
+/*
 use App\Post;
 Route::get('/softdelete', function(){
-	Post::find(7)->delete();
+	Post::find(10)->delete();
 });
+*/
 
+//Lecture 8 - Eloquent 8 - Retrieve SoftDelete Records
+use App\Post;
+Route::get('/readsoftdelete', function(){
+	$post = Post::withTrashed()->where('id', 10)->get();    //withTrashed() is going to pick results from Trashed records as well.
+	return $post;
+});
