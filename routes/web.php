@@ -227,8 +227,8 @@ Route::get('/softdelete', function(){
 });
 */
 
-//Lecture 8 - Eloquent 8 - Retrieve SoftDelete Records
-use App\Post;
+//Lecture 58 - Eloquent 9 - Retrieve SoftDelete Records
+/*use App\Post;
 Route::get('/readsoftdelete', function(){
 	//withTrashed will pull records from Trashed items also.
 	//$post = Post::withTrashed()->where('id', 10)->get();    //withTrashed() is going to pick results from Trashed records as well.
@@ -238,5 +238,15 @@ Route::get('/readsoftdelete', function(){
 	//Example: Pull Trashed Non Admins i.e. is_admin=0
 	$post = Post::onlyTrashed()->where('is_admin', 0)->get();    //withTrashed() is going to pick results from Trashed records as well.
 	return $post;
+});
+*/
 
+
+//Lecture 59 - Eloquent 10 - Retrieve SoftDelete Records
+use App\Post;
+Route::get('/restoresoftdeleted', function(){
+	//Let's restore Soft Deleted Records with restore() function
+	//In following example - Restring all non-admins who are soft-deleted
+	$post = Post::withTrashed()->where('is_admin', 0)->restore();
+	return $post;
 });
