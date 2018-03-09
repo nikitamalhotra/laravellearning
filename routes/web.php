@@ -143,7 +143,6 @@ Route::get('/massassignment', function() {
 /*
 use App\Post;
 Route::get('/simplesave', function() {
-
 	$post = new Post;
 	$post->title = "Laravel Lesson 1";
 	$post->body  = "Laravel Body content for Lesson 1";
@@ -194,6 +193,75 @@ Route::get('/simplesave', function() {
 	$post->body  = "Laravel Body content for Lesson 10";
 	$post->save();
 });
+
+Route::get('/simplesave2', function() {
+	$post = new Post;
+	$post->id    = 1;
+	$post->title = "Laravel Lesson 1";
+	$post->body  = "Laravel Body content for Lesson 1";
+	$post->save();
+
+	$post = new Post;
+	$post->id    = 2;
+	$post->title = "Laravel Lesson 2";
+	$post->body  = "Laravel Body content for Lesson 2";
+	$post->save();
+
+	$post = new Post;
+	$post->id    = 3;
+	$post->title = "Laravel Lesson 3";
+	$post->body  = "Laravel Body content for Lesson 3";
+	$post->save();
+
+	$post = new Post;
+	$post->id    = 4;
+	$post->title = "Laravel Lesson 4";
+	$post->body  = "Laravel Body content for Lesson 4";
+	$post->save();
+
+	$post = new Post;
+	$post->id    = 5;
+	$post->title = "Laravel Lesson 5";
+	$post->body  = "Laravel Body content for Lesson 5";
+	$post->save();
+
+	$post = new Post;
+	$post->id    = 6;
+	$post->title = "Laravel Lesson 6";
+	$post->body  = "Laravel Body content for Lesson 6";
+	$post->save();
+
+	$post = new Post;
+	$post->id    = 7;
+	$post->title = "Laravel Lesson 7";
+	$post->body  = "Laravel Body content for Lesson 7";
+	$post->save();
+
+	$post = new Post;
+	$post->id    = 8;
+	$post->title = "Laravel Lesson 8";
+	$post->body  = "Laravel Body content for Lesson 8";
+	$post->save();
+
+	$post = new Post;
+	$post->id    = 9;
+	$post->title = "Laravel Lesson 9";
+	$post->body  = "Laravel Body content for Lesson 9";
+	$post->save();
+
+	$post = new Post;
+	$post->id    = 10;
+	$post->title = "Laravel Lesson 10";
+	$post->body  = "Laravel Body content for Lesson 10";
+	$post->save();
+});
+
+Route::get('/simplesave3', function() {
+	$post = new Post;
+	$post->title = "Laravel Lesson 11";
+	$post->body  = "Laravel Body content for Lesson 11";
+	$post->save();
+});
 */
 
 
@@ -242,7 +310,8 @@ Route::get('/readsoftdelete', function(){
 */
 
 
-//Lecture 59 - Eloquent 10 - Retrieve SoftDelete Records
+//Lecture 59 - Eloquent 10 - Restore SoftDelete Records
+/*
 use App\Post;
 Route::get('/restoresoftdeleted', function(){
 	//Let's restore Soft Deleted Records with restore() function
@@ -250,3 +319,21 @@ Route::get('/restoresoftdeleted', function(){
 	$post = Post::withTrashed()->where('is_admin', 0)->restore();
 	return $post;
 });
+*/
+
+//Lecture 60 - Eloquent 11 - Permanently Deleting Record using forceDelete()
+use App\Post;
+Route::get('/permanentdelete', function(){
+	//Permanently Deleting Records (including Soft Deleted)
+	//Post::withTrashed()->where('is_admin', 0)->forceDelete();
+
+	//Permanently Deleting Trashed Records (Only Soft Deleted)
+	Post::onlyTrashed()->where('is_admin', 0)->forceDelete();
+});
+
+
+
+
+
+
+
