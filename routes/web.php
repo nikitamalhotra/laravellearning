@@ -91,15 +91,16 @@ Route::get('/findwhere', function() {
 
 
 //Eloquent 3
-
+//Problem findorFail() does not throws error when wrong id is passed.
+/*
 use App\Post;
 Route::get('/findmore', function() {
-	$posts = Post::findorfail(5);
+	$posts = Post::findorFail(11);
 	//$posts = POST::where('id', '<', 2)->findorFail(2); //->get();
 	return $posts;
 
 });
-
+*/
 
 //Eloquent 4
 /*
@@ -138,10 +139,90 @@ Route::get('/massassignment', function() {
 });
 */
 
+//Eloquent to create bulk records in Posts Table - it will create 10 records in posts table
+/*
+use App\Post;
+Route::get('/simplesave', function() {
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 1";
+	$post->body  = "Laravel Body content for Lesson 1";
+	$post->save();
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 2";
+	$post->body  = "Laravel Body content for Lesson 2";
+	$post->save();
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 3";
+	$post->body  = "Laravel Body content for Lesson 3";
+	$post->save();
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 4";
+	$post->body  = "Laravel Body content for Lesson 4";
+	$post->save();
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 5";
+	$post->body  = "Laravel Body content for Lesson 5";
+	$post->save();
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 6";
+	$post->body  = "Laravel Body content for Lesson 6";
+	$post->save();
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 7";
+	$post->body  = "Laravel Body content for Lesson 7";
+	$post->save();
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 8";
+	$post->body  = "Laravel Body content for Lesson 8";
+	$post->save();
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 9";
+	$post->body  = "Laravel Body content for Lesson 9";
+	$post->save();
+
+	$post = new Post;
+	$post->title = "Laravel Lesson 10";
+	$post->body  = "Laravel Body content for Lesson 10";
+	$post->save();
+});
+*/
+
 
 //Eloquent 6 - Update Method
-
-//use App\Post;
+/*
+use App\Post;
 Route::get('/updatemethod', function() {
 	Post::where('id', 1)->where('is_admin', 0)->update(['title'=>'Updated Title 1', 'body'=> 'Updated Body 1']);
 });
+*/
+
+//Eloquent 7 - Delete Method
+/*
+use App\Post;
+Route::get("/deletemethod1", function(){
+	//$post = Post::find(1);
+	//$post->delete();
+
+	//Post::destroy(2);
+	//Post::destroy([2,3]);
+
+	Post::where('id', 2)->delete();
+});
+*/
+
+//Eloquent 8 - SoftDelete Method
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Post;
+Route::get('/softdelete', function(){
+	Post::find(7)->delete();
+});
+
