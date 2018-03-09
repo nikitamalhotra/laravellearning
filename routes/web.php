@@ -230,6 +230,13 @@ Route::get('/softdelete', function(){
 //Lecture 8 - Eloquent 8 - Retrieve SoftDelete Records
 use App\Post;
 Route::get('/readsoftdelete', function(){
-	$post = Post::withTrashed()->where('id', 10)->get();    //withTrashed() is going to pick results from Trashed records as well.
+	//withTrashed will pull records from Trashed items also.
+	//$post = Post::withTrashed()->where('id', 10)->get();    //withTrashed() is going to pick results from Trashed records as well.
+	//return $post;
+
+	//What if you want to pull only Trashed Items
+	//Example: Pull Trashed Non Admins i.e. is_admin=0
+	$post = Post::onlyTrashed()->where('is_admin', 0)->get();    //withTrashed() is going to pick results from Trashed records as well.
 	return $post;
+
 });
