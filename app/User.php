@@ -37,6 +37,8 @@ class User extends Authenticatable
 
 	//This function implements Roles - Pivot Table
 	public function roles(){
-		return $this->belongsToMany('App\Role');
+		//return $this->belongsToMany('App\Role');
+		//The created_at Column will be returned from intermediate table.
+		return $this->belongsToMany('App\Role')->withPivot('created_at');
 	}
 }

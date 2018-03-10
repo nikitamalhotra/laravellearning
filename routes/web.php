@@ -383,17 +383,49 @@ Route::get('/userposts/{id}', function($id){
 */
 
 //Lecture 66-67 - Pivot Table
+/*
 use App\Post;
 use App\User;
 Route::get('/userrole/{id}', function($id){
-	/*
-	$user = User::find($id);
-	foreach ($user->roles as $role){
-		echo $role->name . "<br>";
-	}
-	*/
+	//$user = User::find($id);
+	//foreach ($user->roles as $role){
+	//	echo $role->name . "<br>";
+	//}
+
 
 	//I assigned two roles to the user to test result of following statement
 	$user = User::find($id)->roles()->orderBy('id', 'desc')->get();
 	return $user;
+});
+*/
+
+
+//Lecture 68 - Pivot Table - Inverse
+//It will display all users with particular role
+/*
+use App\Post;
+use App\User;
+use App\Role;
+Route::get('/roleusers/{id}', function($id){
+	$roles = Role::find($id);
+	foreach ($roles->users as $role){
+		echo $role->name . "<br>";
+	}
+});
+*/
+
+//Lecture 68 - Querying Intermediate Table
+use App\Post;
+use App\User;
+use App\Role;
+Route::get('user/pivot', function(){
+	$user = User::find(1);
+	foreach ($user->roles as $role){
+		echo $role->pivot->created_at . "<br>";
+	}
+
+	//$role = Role::find(1);
+	//foreach ($role->users as $user){
+	//	echo $user->pivot->created_at . "<br>";
+	//}
 });
