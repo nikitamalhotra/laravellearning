@@ -354,9 +354,17 @@ Route::get('/simplesave2', function() {
  |      Eloquent Relationships
  |------------------------------------------------------------------------------------
 */
-use App\Post;
+//Lecture 62 - 1:1 Relationship U -> P
+use App\Post;   //Use Model Class on which you're going to work.
 use App\User;
 Route::get('/user/{id}/post', function($id){
 	$user = User::find($id);
 	return $user->post->title;
 });
+
+//Lecture 63 - The inverse of 1:1 Relationship Post to User
+Route::get('/post/{id}/user', function($id){
+	$user = Post::find($id);
+	return $user->user->name;
+});
+

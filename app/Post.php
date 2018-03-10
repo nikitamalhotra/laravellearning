@@ -9,4 +9,9 @@ class Post extends Model
 	use SoftDeletes;
     protected $fillable =['user_id', 'title', 'body'];
     protected $dates = ['deleted_at'];
+
+
+    public function User(){
+    	return $this->belongsTo('App\User');
+    }
 }
