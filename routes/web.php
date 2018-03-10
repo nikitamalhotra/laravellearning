@@ -445,12 +445,11 @@ Route::get('user/country', function(){
 });
 */
 
-
+/*
 //Lecture 71-72 - Polymorphic Relation
 //Fetching Posts Column via Country Table.
 use App\User;
 use App\Post;
-//use App\Post;
 Route::get('/polymorphic', function(){
 	//$user = User::find(1);
 	//foreach ($user->photos as $photo){
@@ -461,4 +460,14 @@ Route::get('/polymorphic', function(){
 	foreach($post->photos as $photo){
 		echo $photo->path . "<br>";
 	}
+});
+*/
+
+//Lecture 73 - Finding the owner of the Photo - Inverse Polymorphic Relation
+use App\User;
+use App\Post;
+use App\Photo;
+Route::get('/photo/{id}/user', function($id){
+	$photo = Photo::find($id);
+	return $photo->imageable;
 });
