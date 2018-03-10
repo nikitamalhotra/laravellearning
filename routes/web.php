@@ -254,10 +254,9 @@ Route::get('/simplesave2', function() {
 	$post->title = "Laravel Lesson 10";
 	$post->body  = "Laravel Body content for Lesson 10";
 	$post->save();
-});
 
-Route::get('/simplesave3', function() {
 	$post = new Post;
+	$post->id    = 11;
 	$post->title = "Laravel Lesson 11";
 	$post->body  = "Laravel Body content for Lesson 11";
 	$post->save();
@@ -322,7 +321,7 @@ Route::get('/restoresoftdeleted', function(){
 */
 
 //Lecture 60 - Eloquent 11 - Permanently Deleting Record using forceDelete()
-use App\Post;
+//use App\Post;
 Route::get('/permanentdelete', function(){
 	//Permanently Deleting Records (including Soft Deleted)
 	//Post::withTrashed()->where('is_admin', 0)->forceDelete();
@@ -332,8 +331,32 @@ Route::get('/permanentdelete', function(){
 });
 
 
+Route::get('/simplesave2', function() {
+	//Mass Assignment to Create some Data for Database
+	//Post::create(['user_id'=>1, 'title'=>'', 'body'=> '']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 1', 'body'=> 'Laravel Body content for Lesson 1']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 2', 'body'=> 'Laravel Body content for Lesson 2']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 3', 'body'=> 'Laravel Body content for Lesson 3']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 4', 'body'=> 'Laravel Body content for Lesson 4']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 5', 'body'=> 'Laravel Body content for Lesson 5']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 6', 'body'=> 'Laravel Body content for Lesson 6']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 7', 'body'=> 'Laravel Body content for Lesson 7']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 8', 'body'=> 'Laravel Body content for Lesson 8']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 9', 'body'=> 'Laravel Body content for Lesson 9']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 10', 'body'=> 'Laravel Body content for Lesson 10']);
+	Post::create(['user_id'=>1, 'title'=>'Laravel Lesson 11', 'body'=> 'Laravel Body content for Lesson 11']);
+});
 
 
 
-
-
+/*
+ |------------------------------------------------------------------------------------
+ |      Eloquent Relationships
+ |------------------------------------------------------------------------------------
+*/
+use App\Post;
+use App\User;
+Route::get('/user/{id}/post', function($id){
+	$user = User::find($id);
+	return $user->post->title;
+});

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 	use SoftDeletes;
-    protected $fillable =['title', 'body'];
+    protected $fillable =['user_id', 'title', 'body'];
     protected $dates = ['deleted_at'];
 }
