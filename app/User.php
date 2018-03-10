@@ -25,8 +25,13 @@ class User extends Authenticatable
     /*For Soft Deletes */
 	//protected $dates = ['deleted_at'];    //Will implement it later
 
+	//This function implements One:One Relationship
 	public function Post(){
 		return $this->hasOne('App\Post');
 	}
 
+	//This function implements One:Many Relationship
+	public function Posts(){
+		return $this->hasMany('App\Post');
+	}
 }
