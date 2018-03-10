@@ -435,10 +435,30 @@ Route::get('user/pivot', function(){
 
 //Lecture 70 - HasManyThroughRelation
 //Fetching Posts Column via Country Table.
+/*
 use App\Country;
 Route::get('user/country', function(){
 	$country = Country::find(2);
 	foreach ($country->posts as $post){
 		echo $post->title . "<br>";
+	}
+});
+*/
+
+
+//Lecture 71-72 - Polymorphic Relation
+//Fetching Posts Column via Country Table.
+use App\User;
+use App\Post;
+//use App\Post;
+Route::get('/polymorphic', function(){
+	//$user = User::find(1);
+	//foreach ($user->photos as $photo){
+	//	echo $photo . "<br>";
+	//}
+
+	$post = Post::find(8);
+	foreach($post->photos as $photo){
+		echo $photo->path . "<br>";
 	}
 });

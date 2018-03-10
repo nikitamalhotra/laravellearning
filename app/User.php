@@ -41,4 +41,8 @@ class User extends Authenticatable
 		//The created_at Column will be returned from intermediate table.
 		return $this->belongsToMany('App\Role')->withPivot('created_at');
 	}
+
+	public function photos(){
+		return $this->morphMany('App\Photo', 'imageable');
+	}
 }
