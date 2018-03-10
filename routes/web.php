@@ -415,6 +415,7 @@ Route::get('/roleusers/{id}', function($id){
 */
 
 //Lecture 68 - Querying Intermediate Table
+/*
 use App\Post;
 use App\User;
 use App\Role;
@@ -428,4 +429,16 @@ Route::get('user/pivot', function(){
 	//foreach ($role->users as $user){
 	//	echo $user->pivot->created_at . "<br>";
 	//}
+});
+*/
+
+
+//Lecture 70 - HasManyThroughRelation
+//Fetching Posts Column via Country Table.
+use App\Country;
+Route::get('user/country', function(){
+	$country = Country::find(2);
+	foreach ($country->posts as $post){
+		echo $post->title . "<br>";
+	}
 });
