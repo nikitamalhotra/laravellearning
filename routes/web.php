@@ -371,6 +371,7 @@ Route::get('/post/{id}/user', function($id){
 */
 
 //Lecture 64 - One:Many Relationship U -> P
+/*
 use App\Post;
 use App\User;
 Route::get('/userposts/{id}', function($id){
@@ -378,4 +379,21 @@ Route::get('/userposts/{id}', function($id){
 	foreach ($user->posts as $post){
 		echo $post->title . "<br>";
 	}
+});
+*/
+
+//Lecture 66-67 - Pivot Table
+use App\Post;
+use App\User;
+Route::get('/userrole/{id}', function($id){
+	/*
+	$user = User::find($id);
+	foreach ($user->roles as $role){
+		echo $role->name . "<br>";
+	}
+	*/
+
+	//I assigned two roles to the user to test result of following statement
+	$user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+	return $user;
 });

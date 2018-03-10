@@ -31,7 +31,12 @@ class User extends Authenticatable
 	}
 
 	//This function implements One:Many Relationship
-	public function Posts(){
+	public function  Posts(){
 		return $this->hasMany('App\Post');
+	}
+
+	//This function implements Roles - Pivot Table
+	public function roles(){
+		return $this->belongsToMany('App\Role');
 	}
 }
