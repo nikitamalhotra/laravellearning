@@ -475,13 +475,18 @@ Route::get('/photo/{id}/user', function($id){
 */
 
 //Lecture 74-76 - Polymorphic Relation - Many to Many
-
 use App\Post;
+use App\Video;
 Route::get('/post/tag/{id}', function($id){
+	//Works for Post
 	$post = Post::find($id);
-	//var_dump($post);
 	foreach($post->tags as $tag){
 		echo $tag->name . "<br>";
 	}
 
+	//Works for Video
+	//$video = Video::find($id);
+	//foreach($video->tags as $tag){
+	//	echo $tag->name . "<br>";
+	//}
 });
