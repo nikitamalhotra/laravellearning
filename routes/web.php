@@ -474,6 +474,7 @@ Route::get('/photo/{id}/user', function($id){
 });
 */
 
+/*
 //Lecture 74-76 - Polymorphic Relation - Many to Many
 use App\Post;
 use App\Video;
@@ -488,5 +489,22 @@ Route::get('/post/tag/{id}', function($id){
 	//$video = Video::find($id);
 	//foreach($video->tags as $tag){
 	//	echo $tag->name . "<br>";
+	//}
+});
+*/
+
+
+//Lecture 77 - Polymorphic Relation - Many to Many - Retrieving Tag Owner
+use App\Tag;
+Route::get('/tagowner/{id}', function($id){
+	$tag = Tag::find($id);
+	foreach($tag->posts as $post){
+		echo $post->title;
+	}
+
+	//Following Code will return Tag's Video Owner
+	//$tag = Tag::find($id);
+	//foreach($tag->posts as $post){
+	//	echo $post->title;
 	//}
 });
