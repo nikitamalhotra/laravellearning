@@ -463,6 +463,7 @@ Route::get('/polymorphic', function(){
 });
 */
 
+/*
 //Lecture 73 - Finding the owner of the Photo - Inverse Polymorphic Relation
 use App\User;
 use App\Post;
@@ -470,4 +471,17 @@ use App\Photo;
 Route::get('/photo/{id}/user', function($id){
 	$photo = Photo::find($id);
 	return $photo->imageable;
+});
+*/
+
+//Lecture 74-76 - Polymorphic Relation - Many to Many
+
+use App\Post;
+Route::get('/post/tag/{id}', function($id){
+	$post = Post::find($id);
+	//var_dump($post);
+	foreach($post->tags as $tag){
+		echo $tag->name . "<br>";
+	}
+
 });
